@@ -1,6 +1,14 @@
 """
 4th Grade Python class MegaBratBot program.
 We need to have it so the bratbots only say stuff twice. I will work on that.
+
+March 3 code update: 
+We converted the data structure holding bot roasts from a list to a dictionary, so we could assign a value (score) to each roast. Why? So that when two bots battle, the program will evaluate the winner based on the combined numerical value all roasts given, rather than just randomly picking a winner.
+To make that work, we have to make a change to all roast print statements. When the 'phrases' variable was a list, random.choice() could work directly with it, but since it's now a dictionary, we have to convert it on the fly to a list by doing list(phrases).
+Old form: print(random.choice(phrases))
+Old form: print(random.choice(list(phrases)))
+
+Our code is still tremendously inefficient and repetitive. We'll look at ways to clean it all up. This is a job for object-oriented programming! But there are other hacks we can do to greatly reduce the size of the codebase.
 """
 import random
 import time
@@ -55,7 +63,10 @@ if hav_username == "y":
       print("(b) put two bots in a roasting battle?")
       print("(c) add a bot")
       game = input("Please choose (type q to quit): ")
-      # chat with a single bot
+      # single-bot chat
+      # DLBros: notice how much code is repeated here?
+      # DRY=Don't Repeat Yourself
+      # We'll talk about how to make this code more efficient
       if game in ['a','A']:
         for bot in bot_list:
           print(bot,":",bot_list[bot])
@@ -205,6 +216,8 @@ if hav_username == "y":
           phrases2 = camila.phrases
         elif bot2 == 16:
           phrases2 = kai.phrases
+        elif bot2 == 17:
+          phrases2 = sammy.phrases
 
         times = random.randint(3,10)
         bot1score = bot2score = 0
