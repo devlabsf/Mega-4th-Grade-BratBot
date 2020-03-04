@@ -8,7 +8,7 @@ To make that work, we have to make a change to all roast print statements. When 
 Old form: print(random.choice(phrases))
 Old form: print(random.choice(list(phrases)))
 
-Our code is still tremendously inefficient and repetitive. We'll look at ways to clean it all up. This is a job for object-oriented programming! But there are other hacks we can do to greatly reduce the size of the codebase.
+Team: our code is still inefficient and repetitive. DRY! We'll look at ways to clean it all up. This is a job for object-oriented programming! But there are other hacks we can do to greatly reduce the size of the codebase even without OOP.
 """
 import random
 import time
