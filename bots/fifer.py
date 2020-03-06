@@ -10,12 +10,12 @@ phrases = {
 "hewoooo":1,
 "ahhhhhhh!!":1,
 "(talks like a baby)":1,
-"what did you do that for":1,
+"what did you do dat for":1,
 "bwaaaaaaaaa!!":1,
-"what the heck":1,
+"what da heck":1,
 "ooooooooo look at meeeeeeeeee!!!":1,
 "what noooooo":1,
-";)":1,
+":)":1,
 }
 
-greeting = "wus up pwepl"
+greeting = "wussup peepl"

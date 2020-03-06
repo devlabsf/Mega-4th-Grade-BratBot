@@ -3,7 +3,7 @@
 We need to have it so the bratbots only say stuff twice. I will work on that.
 
 March 4 GitHub announcement:
-I created a GitHub repo for devlabsf. Please check in (commit) any future code changes with a note stating what you did!
+devlabsf has a GitHub repo. Please check in (commit) any future code changes with a note stating what you did!
 
 March 3 code update: 
 We converted the data structure holding bot roasts from a list to a dictionary, so we could assign a value (score) to each roast. Why? So that when two bots battle, the program will evaluate the winner based on the combined numerical value all roasts given, rather than just randomly picking a winner.
@@ -15,6 +15,7 @@ Team: our code is still inefficient and repetitive. DRY! We'll look at ways to c
 """
 import random
 import time
+from termcolor import colored
 
 from bots import sammy
 from bots import daisy
@@ -34,17 +35,17 @@ from bots import ryth
 from bots import camila
 from bots import kai
 
-print ("This code is a production of the DL bros")
+print (colored("This code is a production of the DL bros", 'yellow'))
 time.sleep (1.5)
-print ("Harry's signature","\U0001f3c6")
+print (colored("Harry's signature\U0001f3c6",'green'))
 time.sleep (1.5)
-print ("Jayden's signature","\u2b50")
+print (colored("Jayden's signature\U0001f48e",'red'))
 time.sleep (1.5)
-print("Lazlo's signuture","\U0001f48e")
+print(colored("Lazlo's signuture\u2b50",'blue'))
 time.sleep (1.5)
 
 sessionover = False
-hav_username = input("Do you have a account? (y/n) ")
+hav_username = input(colored("Do you have a account? (y/n) ",'green'))
 if hav_username == "y":
   # authenticate user
   auth = 0
@@ -131,7 +132,7 @@ if hav_username == "y":
         if bot == 9:
           while True:
             time.sleep(0.5)
-            print(random.choice(list(phrases)))
+            print(colored(random.choice(list(phrases),'green')))
             y = phrases
             x = input()
             if x == "mhm" or x == "mhhm" or x == "mhhhm":
@@ -149,7 +150,7 @@ if hav_username == "y":
       ## BattleBot mode
       elif game in ['b','B']:
         for bot in bot_list:
-          print(bot,":",bot_list[bot])
+          print(colored(str(bot) + ":" + bot_list[bot],'blue'))
         bot1 = int(input("Choose your first bot (enter a number from the list): "))
         if bot1 == 1:
           phrases1 = daisy.phrases
@@ -183,9 +184,11 @@ if hav_username == "y":
           phrases1 = camila.phrases
         elif bot1 == 16:
           phrases1 = kai.phrases
+        elif bot1 == 17:
+          phrases1 = sammy.phrases
           
         for bot in bot_list:
-          print(bot,":",bot_list[bot])
+          print(colored(str(bot) + ":" + bot_list[bot],'red'))
         bot2 = int(input("Choose your second bot (enter a number from the list): "))
         if bot2 == 1:
           phrases2 = daisy.phrases
@@ -227,15 +230,15 @@ if hav_username == "y":
         for _ in range(times):
           bot1roast = random.choice(list(phrases1))
           bot1score += phrases1[bot1roast]
-          print(bot_list[bot1],":",bot1roast)
+          print(colored(bot_list[bot1]+":"+bot1roast,'blue'))
           time.sleep(1.5)
           bot2roast = random.choice(list(phrases2))
           bot2score += phrases2[bot2roast]
-          print(bot_list[bot2],":",bot2roast)
+          print(colored(bot_list[bot2]+":"+bot2roast, 'red'))
           time.sleep(1.5)
           winner = bot1 if bot1score > bot2score else bot2
           #winner = random.choice([bot_list[bot1],bot_list[bot2]])
-        print(bot_list[winner], f"wins the BratBot battle!! {bot1score} to {bot2score}!! OHHHHHHHH!!!!")
+        print(colored(bot_list[winner], f"wins the BratBot battle!! {bot1score} to {bot2score}!! OHHHHHHHH!!!!",'green'))
         print()
 
       # this will be the place to create a new bot
