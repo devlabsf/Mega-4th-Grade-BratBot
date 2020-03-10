@@ -3,15 +3,15 @@
 We need to have it so the bratbots only say stuff twice. I will work on that.
 
 March 4 GitHub announcement:
-devlabsf has a GitHub repo. Please check in (commit) any future code changes with a note stating what you did!
+devlabsf has a GitHub repo. Please commit all future code changes with a note stating what you did!
 
 March 3 code update: 
-We converted the data structure holding bot roasts from a list to a dictionary, so we could assign a value (score) to each roast. Why? So that when two bots battle, the program will evaluate the winner based on the combined numerical value all roasts given, rather than just randomly picking a winner.
-To make that work, we have to make a change to all roast print statements. When the 'phrases' variable was a list, random.choice() could work directly with it, but since it's now a dictionary, we have to convert it on the fly to a list by doing list(phrases).
+We converted the data structure holding bot roasts from a list to a dictionary, so we could assign a value (score) to each roast. Why? Now, when two bots battle, the program will judge the winner based on the combined numerical value of all roasts given, rather than just randomly picking a winner.
+To make that work, we have to make a change to all "roasting" print commands. When the 'phrases' variable was a list, random.choice() could work directly with phrases, but since phrases is now a dictionary, we have to convert it on the fly to a list by doing list(phrases).
 Old form: print(random.choice(phrases))
 Old form: print(random.choice(list(phrases)))
 
-Team: our code is still inefficient and repetitive. DRY! We'll look at ways to clean it all up. This is a job for object-oriented programming! But there are other hacks we can do to greatly reduce the size of the codebase even without OOP.
+Team: our code is still inefficient and repetitive. D.R.Y.! We'll look at ways to clean it all up. This is a job for object-oriented programming! But there are other hacks we can do to greatly reduce the size of the codebase even without OOP.
 """
 import random
 import time
@@ -238,12 +238,12 @@ if hav_username == "y":
           time.sleep(1.5)
           winner = bot1 if bot1score > bot2score else bot2
           #winner = random.choice([bot_list[bot1],bot_list[bot2]])
-        print(colored(bot_list[winner], f"wins the BratBot battle!! {bot1score} to {bot2score}!! OHHHHHHHH!!!!",'green'))
+        print(colored(bot_list[winner] + f" wins the BratBot battle!! {bot1score} to {bot2score}!! OHHHHHHHH!!!!",'green'))
         print()
 
       # this will be the place to create a new bot
       elif game in ['C','c']:
-        new_file = input("What would you like the name of the bot to be?")
+        new_file = input("What would you like the name of the bot to be? ")
         print("This feature coming soon!")
         #f = open('%s.txt' % new_file, 'w')
 
